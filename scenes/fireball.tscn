@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://c1x2682el81mg"]
+
+[ext_resource type="Texture2D" uid="uid://rnx8igfh6i5x" path="res://magic/10 Fire ball/Fire-ball.png" id="1_5lnkk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqiul"]
+atlas = ExtResource("1_5lnkk")
+region = Rect2(0, 36, 72, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urxvg"]
+atlas = ExtResource("1_5lnkk")
+region = Rect2(72, 36, 72, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjl7c"]
+atlas = ExtResource("1_5lnkk")
+region = Rect2(144, 36, 72, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccji2"]
+atlas = ExtResource("1_5lnkk")
+region = Rect2(216, 36, 72, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjhta"]
+atlas = ExtResource("1_5lnkk")
+region = Rect2(288, 36, 72, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwx3c"]
+atlas = ExtResource("1_5lnkk")
+region = Rect2(360, 36, 72, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0k2uy"]
+atlas = ExtResource("1_5lnkk")
+region = Rect2(432, 36, 72, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wmxj"]
+atlas = ExtResource("1_5lnkk")
+region = Rect2(504, 36, 72, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eykos"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqiul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urxvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjl7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccji2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjhta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwx3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0k2uy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wmxj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hpb3t"]
+radius = 14.0
+
+[node name="Fireball" type="Area2D"]
+position = Vector2(259, 141)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_eykos")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, -2)
+shape = SubResource("CircleShape2D_hpb3t")
