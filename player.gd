@@ -1,24 +1,51 @@
 extends CharacterBody2D
 
+@export var speed: float = 300.0  # Prędkość gracza
+@export var atk: int = 10  # Siła ataku gracza
+@export var hp: int = 100  # Punkty życia gracza
+@export var attack_range: float = 100.0  # Zasięg ataku gracza
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+@onready var anim: AnimatedSprite2D = $AnimatedSprite2D  # Pobranie referencji do animacji
 
+var is_attacking: bool = false  # Flaga sprawdzająca, czy gracz atakuje
 
 func _physics_process(delta: float) -> void:
-	
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	if is_attacking:  
+		return  # Jeśli atak trwa, nie wykonuj ruchu
+
 	var direction_x := Input.get_axis("left", "right")
-	if direction_x:
-		velocity.x = direction_x * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-	
 	var direction_y := Input.get_axis("up", "down")
-	if direction_y:
-		velocity.y = direction_y * SPEED
+	
+	var direction := Vector2(direction_x, direction_y)
+
+	if direction != Vector2.ZERO:
+		velocity = direction.normalized() * speed
+		anim.play("walk")  # Animacja chodzenia
 	else:
-		velocity.y = move_toward(velocity.y, 0, SPEED)
+		velocity = Vector2.ZERO
+		anim.play("idle")  # Animacja bezczynności
 
 	move_and_slide()
+
+	# Atak lewym przyciskiem myszy
+	if Input.is_action_just_pressed("mouse_left"):
+		attack()
+
+func attack():
+	if is_attacking:  
+		return  # Jeśli atak już trwa, nie odtwarzaj animacji ponownie
+
+	is_attacking = true  # Ustawienie flagi ataku
+	anim.play("attack")  # Odtworzenie animacji ataku
+
+	# Sprawdzenie kolizji z przeciwnikiem w pobliżu
+	var enemies = get_tree().get_nodes_in_group("enemy")
+	for enemy in enemies:
+		if enemy is CharacterBody2D and global_position.distance_to(enemy.global_position) <= attack_range:
+			enemy.take_damage(atk)  # Zadanie obrażeń przeciwnikowi
+			print("Gracz zaatakował przeciwnika!")
+
+	# Czekanie na zakończenie animacji ataku
+	await anim.animation_finished  
+	is_attacking = false  # Flaga wraca do false po zakończeniu ataku
+	anim.play("idle")  # Powrót do idle

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cht6uvdpg5428"]
+[gd_scene load_steps=23 format=3 uid="uid://cht6uvdpg5428"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_fudga"]
 [ext_resource type="Texture2D" uid="uid://hoq1j3sbe08g" path="res://assety pelne/Tiny Swords (Update 010)/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="1_mv2sw"]
@@ -154,14 +154,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxxhq"]
-bg_color = Color(0.837753, 0.119367, 0.181844, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7dnfu"]
-bg_color = Color(6.73831e-07, 0.781103, 0.288806, 1)
-
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
-position = Vector2(523, 100)
+position = Vector2(520, 103)
 script = ExtResource("1_fudga")
 metadata/_edit_group_ = true
 
@@ -174,14 +168,12 @@ autoplay = "idle"
 polygon = PackedVector2Array(18, 32, -17, 32, -21, 23, -30, 21, -30, 16, -33, 11, -31, 4, -32, -4, -33, -16, -23, -16, -19, -25, -13, -23, -7, -32, 12, -22, 19, -26, 22, -21, 19, -17, 31, -1, 30, 3, 17, 0, 19, 7, 23, 11, 26, 15, 26, 21, 21, 23, 19, 26)
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -140.0
-offset_top = -70.0
-offset_right = -61.0
-offset_bottom = -62.0
+offset_left = -46.0
+offset_top = -69.0
+offset_right = 33.0
+offset_bottom = -61.0
 tooltip_text = "HP
 "
-theme_override_styles/background = SubResource("StyleBoxFlat_kxxhq")
-theme_override_styles/fill = SubResource("StyleBoxFlat_7dnfu")
 max_value = 50.0
 value = 50.0
 show_percentage = false
