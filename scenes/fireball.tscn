@@ -1,6 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://c1x2682el81mg"]
 
 [ext_resource type="Texture2D" uid="uid://rnx8igfh6i5x" path="res://magic/10 Fire ball/Fire-ball.png" id="1_5lnkk"]
+[ext_resource type="Script" path="res://scenes/fireball.gd" id="1_bcgwq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fqiul"]
 atlas = ExtResource("1_5lnkk")
@@ -66,15 +67,14 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hpb3t"]
-radius = 14.0
-
 [node name="Fireball" type="Area2D"]
-position = Vector2(259, 141)
+position = Vector2(263, 140)
+scale = Vector2(2, 2)
+script = ExtResource("1_bcgwq")
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_eykos")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(7, -2)
-shape = SubResource("CircleShape2D_hpb3t")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-12, 8, 9, 8, 19, 6, 22, -3, 19, -11, 8, -15, -8, -15, -17, -10, -20, -5, -17, -3, -11, -4, -8, -1, -11, 4)

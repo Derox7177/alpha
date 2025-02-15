@@ -31,3 +31,5 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 59.5)
 shape = SubResource("WorldBoundaryShape2D_f4ib4")
+
+[node name="UI" type="CanvasLayer" parent="."]

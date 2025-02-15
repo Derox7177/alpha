@@ -4,10 +4,25 @@ extends CharacterBody2D
 @export var atk: int = 10  # Siła ataku gracza
 @export var hp: int = 100  # Punkty życia gracza
 @export var attack_range: float = 100.0  # Zasięg ataku gracza
+@export var fireball_scene: PackedScene  # Wczytaj Fireball.tscn
+
+@export var max_mana: int = 100  # Maksymalna ilość many
+var mana: int = max_mana  # Aktualna ilość many
+var fireball_cost: int = 10  # Koszt many do rzutu Fireballa
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D  # Pobranie referencji do animacji
 
 var is_attacking: bool = false  # Flaga sprawdzająca, czy gracz atakuje
+var fireball_cd: bool = false  # Cooldown Fireballa
+
+func _ready():
+	# Timer do regeneracji many (1 mana na sekundę)
+	var mana_regen_timer = Timer.new()
+	mana_regen_timer.wait_time = 1.0
+	mana_regen_timer.autostart = true
+	mana_regen_timer.one_shot = false
+	mana_regen_timer.timeout.connect(_regenerate_mana)
+	add_child(mana_regen_timer)
 
 func _physics_process(delta: float) -> void:
 	if is_attacking:  
@@ -27,9 +42,13 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-	# Atak lewym przyciskiem myszy
+	# Sprawdzenie, czy gracz nacisnął przycisk ataku (normalny atak)
 	if Input.is_action_just_pressed("mouse_left"):
 		attack()
+
+	# Sprawdzenie, czy gracz nacisnął `1` do Fireballa
+	if Input.is_action_just_pressed("one") and not fireball_cd:
+		cast_fireball()
 
 func attack():
 	if is_attacking:  
@@ -49,3 +68,50 @@ func attack():
 	await anim.animation_finished  
 	is_attacking = false  # Flaga wraca do false po zakończeniu ataku
 	anim.play("idle")  # Powrót do idle
+	
+func cast_fireball():
+	if fireball_cd:  
+		return
+
+	# Sprawdzenie, czy gracz ma wystarczającą ilość many
+	if mana < fireball_cost:
+		print("❌ Brak many na Fireball!")
+		return
+
+	# Zużycie many
+	mana -= fireball_cost
+	print("🔥 Fireball rzucony! Pozostała mana:", mana)
+
+	fireball_cd = true  # Ustawienie cooldownu
+	is_attacking = true  # Blokowanie ruchu podczas rzutu Fireballa
+	anim.play("attack2")  # Odtworzenie animacji ataku dystansowego
+
+	await anim.animation_finished  # Poczekaj na zakończenie animacji
+
+	if fireball_scene == null:
+		print("❌ Błąd: fireball_scene nie jest przypisane!")
+		fireball_cd = false  # Reset cooldownu, jeśli fireball nie jest dostępny
+		is_attacking = false
+		return
+
+	var fireball = fireball_scene.instantiate() as Area2D
+	fireball.global_position = global_position  # Ustawienie pozycji startowej
+
+	# Ustaw kierunek zgodnie z orientacją gracza
+	var direction = Vector2.RIGHT if not anim.flip_h else Vector2.LEFT
+	fireball.set_direction(direction)  # Przekazanie kierunku do Fireballa
+
+	get_parent().add_child(fireball)  # Dodanie kuli ognia do sceny
+
+	print("🔥 Gracz użył Fireballa!")
+
+	# Czekanie na cooldown Fireballa
+	await get_tree().create_timer(2.0).timeout
+	fireball_cd = false  # Reset cooldownu
+	is_attacking = false  # Odblokowanie ataku i ruchu
+	anim.play("idle")  # Powrót do idle
+
+func _regenerate_mana():
+	if mana < max_mana:
+		mana += 1
+		print("🔵 Mana zregenerowana:", mana)

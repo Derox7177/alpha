@@ -1,7 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://dyp48q43ps4t7"]
+[gd_scene load_steps=31 format=3 uid="uid://dyp48q43ps4t7"]
 
 [ext_resource type="Texture2D" uid="uid://gii0auaqcfy6" path="res://assety pelne/Tiny Swords (Update 010)/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png" id="1_3bcpf"]
 [ext_resource type="Script" path="res://player.gd" id="1_5o41a"]
+[ext_resource type="PackedScene" uid="uid://c1x2682el81mg" path="res://scenes/fireball.tscn" id="2_nyug8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hluu7"]
 atlas = ExtResource("1_3bcpf")
@@ -207,6 +208,7 @@ radius = 45.0111
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(283, 100)
 script = ExtResource("1_5o41a")
+fireball_scene = ExtResource("2_nyug8")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

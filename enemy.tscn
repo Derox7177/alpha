@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cht6uvdpg5428"]
+[gd_scene load_steps=37 format=3 uid="uid://cht6uvdpg5428"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_fudga"]
 [ext_resource type="Texture2D" uid="uid://hoq1j3sbe08g" path="res://assety pelne/Tiny Swords (Update 010)/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="1_mv2sw"]
@@ -26,6 +26,54 @@ region = Rect2(768, 384, 192, 192)
 [sub_resource type="AtlasTexture" id="AtlasTexture_32ji0"]
 atlas = ExtResource("1_mv2sw")
 region = Rect2(960, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sd81b"]
+atlas = ExtResource("1_mv2sw")
+region = Rect2(0, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ahpe"]
+atlas = ExtResource("1_mv2sw")
+region = Rect2(192, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tb8da"]
+atlas = ExtResource("1_mv2sw")
+region = Rect2(384, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxe01"]
+atlas = ExtResource("1_mv2sw")
+region = Rect2(576, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kwh0"]
+atlas = ExtResource("1_mv2sw")
+region = Rect2(768, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btebr"]
+atlas = ExtResource("1_mv2sw")
+region = Rect2(960, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gisf8"]
+atlas = ExtResource("1_mv2sw")
+region = Rect2(0, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehnw7"]
+atlas = ExtResource("1_mv2sw")
+region = Rect2(192, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8h2u"]
+atlas = ExtResource("1_mv2sw")
+region = Rect2(384, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1740u"]
+atlas = ExtResource("1_mv2sw")
+region = Rect2(576, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flpt5"]
+atlas = ExtResource("1_mv2sw")
+region = Rect2(768, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5kan"]
+atlas = ExtResource("1_mv2sw")
+region = Rect2(960, 768, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ee4gl"]
 atlas = ExtResource("1_mv2sw")
@@ -106,6 +154,47 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_sd81b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ahpe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tb8da")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxe01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kwh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btebr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gisf8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehnw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8h2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1740u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flpt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5kan")
+}],
+"loop": false,
+"name": &"death",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ee4gl")
 }, {
 "duration": 1.0,
@@ -167,7 +256,7 @@ metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_p0uw3")
-animation = &"attack"
+animation = &"death"
 autoplay = "idle"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
