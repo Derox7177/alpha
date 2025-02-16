@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dwi7k3i0j6itv"
-path="res://.godot/imported/loading_corner2.png-594f7aa267bd3f921d8f3f1cd4527b2b.ctex"
+path="res://.godot/imported/loading_corner2.png-6e9b6861623c5bb3dbb2056729767814.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assety pelne/UI/PNG/16Inner_Interface/loading_corner2.png"
-dest_files=["res://.godot/imported/loading_corner2.png-594f7aa267bd3f921d8f3f1cd4527b2b.ctex"]
+source_file="res://assety pelne/16Inner_Interface/loading_corner2.png"
+dest_files=["res://.godot/imported/loading_corner2.png-6e9b6861623c5bb3dbb2056729767814.ctex"]
 
 [params]
 

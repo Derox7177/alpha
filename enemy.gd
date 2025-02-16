@@ -85,19 +85,27 @@ func attack():
 	anim.play("idle")  # Powrót do idle
 
 func take_damage(damage: int):
-	hp -= damage
+	hp = max(0, hp - damage)  # Zapewnia, że HP nie spadnie poniżej 0
 
 	if health_bar:
 		health_bar.value = hp  # Aktualizacja paska HP
 
 	print("Wróg otrzymał", damage, "obrażeń! HP:", hp)
 
-	# Jeśli HP spadnie do 0, wróg znika
 	if hp <= 0:
 		die()
 
 func die():
-	print("Wróg został pokonany!")
-	anim.play("death")  # Jeśli masz animację śmierci
-	await anim.animation_finished  # Poczekaj na zakończenie animacji śmierci
+	print("💀 Wróg został pokonany!")
+
+	set_physics_process(false)  # Wyłączenie fizyki, wróg się nie porusza
+	velocity = Vector2.ZERO  # Natychmiastowe zatrzymanie
+	move_and_slide()  # Aktualizacja pozycji
+
+	# Wyłączenie kolizji, aby nie blokował gracza
+	if collision_shape:
+		collision_shape.set_deferred("disabled", true)
+
+	anim.play("death")  # Odtworzenie animacji śmierci
+	await anim.animation_finished  # Poczekanie na zakończenie animacji
 	queue_free()  # Usunięcie przeciwnika ze sceny

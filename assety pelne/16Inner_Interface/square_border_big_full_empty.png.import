@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c0n6srr0esqmu"
-path="res://.godot/imported/square_border_big_full_empty.png-03c3077d9807f66a1ec9f84285afbeee.ctex"
+path="res://.godot/imported/square_border_big_full_empty.png-9f29947f30a6498cd52a6eb0fec440f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assety pelne/UI/PNG/16Inner_Interface/square_border_big_full_empty.png"
-dest_files=["res://.godot/imported/square_border_big_full_empty.png-03c3077d9807f66a1ec9f84285afbeee.ctex"]
+source_file="res://assety pelne/16Inner_Interface/square_border_big_full_empty.png"
+dest_files=["res://.godot/imported/square_border_big_full_empty.png-9f29947f30a6498cd52a6eb0fec440f2.ctex"]
 
 [params]
 

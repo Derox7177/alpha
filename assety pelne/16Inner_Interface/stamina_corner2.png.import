@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bqqxauix53ipd"
-path="res://.godot/imported/stamina_corner2.png-d1da8ac6eeb77cecbfe9387c6a449ed9.ctex"
+path="res://.godot/imported/stamina_corner2.png-49b1ef530ca55c98352b2cda2179a60e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assety pelne/UI/PNG/16Inner_Interface/stamina_corner2.png"
-dest_files=["res://.godot/imported/stamina_corner2.png-d1da8ac6eeb77cecbfe9387c6a449ed9.ctex"]
+source_file="res://assety pelne/16Inner_Interface/stamina_corner2.png"
+dest_files=["res://.godot/imported/stamina_corner2.png-49b1ef530ca55c98352b2cda2179a60e.ctex"]
 
 [params]
 

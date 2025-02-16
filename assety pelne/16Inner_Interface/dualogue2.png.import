@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b3ap4omhdwdko"
-path="res://.godot/imported/dualogue2.png-2cb1ee4d799bdfca303bfe1abc36b6ee.ctex"
+path="res://.godot/imported/dualogue2.png-a3d5534258746599285534a2802b4ea9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assety pelne/UI/PNG/16Inner_Interface/dualogue2.png"
-dest_files=["res://.godot/imported/dualogue2.png-2cb1ee4d799bdfca303bfe1abc36b6ee.ctex"]
+source_file="res://assety pelne/16Inner_Interface/dualogue2.png"
+dest_files=["res://.godot/imported/dualogue2.png-a3d5534258746599285534a2802b4ea9.ctex"]
 
 [params]
 

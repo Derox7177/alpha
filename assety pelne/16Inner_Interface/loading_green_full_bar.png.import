@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dx5d5dnuso5xl"
-path="res://.godot/imported/loading_green_full_bar.png-49008197c6ee31adbe25e24cc29f315f.ctex"
+path="res://.godot/imported/loading_green_full_bar.png-5014a651354d293c8bd1671ab94975e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assety pelne/UI/PNG/16Inner_Interface/loading_green_full_bar.png"
-dest_files=["res://.godot/imported/loading_green_full_bar.png-49008197c6ee31adbe25e24cc29f315f.ctex"]
+source_file="res://assety pelne/16Inner_Interface/loading_green_full_bar.png"
+dest_files=["res://.godot/imported/loading_green_full_bar.png-5014a651354d293c8bd1671ab94975e9.ctex"]
 
 [params]
 

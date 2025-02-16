@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://0y0wjhdatal6"
-path="res://.godot/imported/stamina-energy-magic_bar_border.png-7dda8046a30b01a6e9d431b6c54f9c8c.ctex"
+path="res://.godot/imported/stamina-energy-magic_bar_border.png-ad77f610615da123cc1713662b6d9a5e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assety pelne/UI/PNG/16Inner_Interface/stamina-energy-magic_bar_border.png"
-dest_files=["res://.godot/imported/stamina-energy-magic_bar_border.png-7dda8046a30b01a6e9d431b6c54f9c8c.ctex"]
+source_file="res://assety pelne/16Inner_Interface/stamina-energy-magic_bar_border.png"
+dest_files=["res://.godot/imported/stamina-energy-magic_bar_border.png-ad77f610615da123cc1713662b6d9a5e.ctex"]
 
 [params]
 

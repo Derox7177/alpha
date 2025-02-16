@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d0jrbu435wme1"
-path="res://.godot/imported/energy_middle_corner.png-cd3413dec016735b5b94eb57f9f7dadf.ctex"
+path="res://.godot/imported/energy_middle_corner.png-816b62886684b38210fac299ea64d1c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assety pelne/UI/PNG/16Inner_Interface/energy_middle_corner.png"
-dest_files=["res://.godot/imported/energy_middle_corner.png-cd3413dec016735b5b94eb57f9f7dadf.ctex"]
+source_file="res://assety pelne/16Inner_Interface/energy_middle_corner.png"
+dest_files=["res://.godot/imported/energy_middle_corner.png-816b62886684b38210fac299ea64d1c4.ctex"]
 
 [params]
 

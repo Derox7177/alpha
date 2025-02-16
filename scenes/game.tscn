@@ -1,18 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://7fgvcxmyi1jv"]
+[gd_scene load_steps=9 format=3 uid="uid://7fgvcxmyi1jv"]
 
 [ext_resource type="PackedScene" uid="uid://dyp48q43ps4t7" path="res://player.tscn" id="2_aqpvn"]
 [ext_resource type="PackedScene" uid="uid://cht6uvdpg5428" path="res://enemy.tscn" id="2_q6x8f"]
+[ext_resource type="Texture2D" uid="uid://b77iw57b8dgs6" path="res://assety pelne/16Inner_Interface/stamina_full_bar.png" id="4_p6780"]
+[ext_resource type="Texture2D" uid="uid://0p80xsphsnyc" path="res://magic/Icons/10-Fire-ball.png" id="6_4s5w5"]
+[ext_resource type="Texture2D" uid="uid://dvjnlpygjraig" path="res://assety pelne/16Inner_Interface/energy_full_bar.png" id="6_yhkbu"]
+[ext_resource type="Texture2D" uid="uid://fgcg8cwd4kt0" path="res://magic/Icons/9-Black-hole.png" id="7_5bhyg"]
+[ext_resource type="Texture2D" uid="uid://dllqbrovec6oh" path="res://assety pelne/16Inner_Interface/magic_full_bar.png" id="7_u4hed"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_f4ib4"]
 
 [node name="Game" type="Node2D"]
-
-[node name="Label" type="Label" parent="."]
-offset_left = 779.0
-offset_top = 39.0
-offset_right = 885.0
-offset_bottom = 62.0
-text = "witaj hejo cos"
 
 [node name="Player" parent="." instance=ExtResource("2_aqpvn")]
 
@@ -33,3 +31,132 @@ position = Vector2(0, 59.5)
 shape = SubResource("WorldBoundaryShape2D_f4ib4")
 
 [node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 88.0
+offset_bottom = 40.0
+scale = Vector2(2, 2)
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control"]
+layout_mode = 0
+offset_right = 87.0
+offset_bottom = 58.0
+metadata/_edit_group_ = true
+
+[node name="HPBar" type="TextureProgressBar" parent="UI/Control/VBoxContainer"]
+layout_mode = 2
+value = 100.0
+texture_under = ExtResource("6_yhkbu")
+texture_progress = ExtResource("4_p6780")
+
+[node name="HPLabel" type="Label" parent="UI/Control/VBoxContainer/HPBar"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+vertical_alignment = 1
+
+[node name="ManaBar" type="TextureProgressBar" parent="UI/Control/VBoxContainer"]
+layout_mode = 2
+value = 100.0
+texture_under = ExtResource("6_yhkbu")
+texture_progress = ExtResource("7_u4hed")
+
+[node name="ManaLabel" type="Label" parent="UI/Control/VBoxContainer/ManaBar"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+vertical_alignment = 1
+
+[node name="FireballUI" type="Control" parent="UI"]
+layout_mode = 3
+anchor_left = 0.098
+anchor_top = 0.229
+anchor_right = 0.103
+anchor_bottom = 0.236
+offset_left = -113.896
+offset_top = -145.392
+offset_right = -66.656
+offset_bottom = -110.928
+metadata/_edit_group_ = true
+
+[node name="FireballIcon" type="TextureRect" parent="UI/FireballUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.057
+anchor_top = 2.308
+anchor_right = 1.143
+anchor_bottom = 3.785
+offset_left = -0.0210001
+offset_top = -0.012001
+offset_right = -25.579
+offset_bottom = -25.615
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("6_4s5w5")
+
+[node name="FireballCDLabel" type="Label" parent="UI/FireballUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 91.0
+offset_right = 7.0
+offset_bottom = 107.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FireballKeyLabel" type="Label" parent="UI/FireballUI"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 70.0
+offset_right = 49.0
+offset_bottom = 93.0
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="blackholeUI" type="Control" parent="UI"]
+layout_mode = 3
+anchor_left = 0.037
+anchor_top = 0.334
+anchor_right = 0.037
+anchor_bottom = 0.334
+offset_left = -41.624
+offset_top = -42.432
+offset_right = -41.624
+offset_bottom = -42.432
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+metadata/_edit_group_ = true
+
+[node name="blackholeIcon" type="TextureRect" parent="UI/blackholeUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_5bhyg")
+
+[node name="blackholeCDLabel" type="Label" parent="UI/blackholeUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.053
+anchor_bottom = 1.081
+offset_left = 1.0
+offset_right = 39.0
+offset_bottom = 38.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="blackholeKeyLabel" type="Label" parent="UI/blackholeUI"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -18.5
+offset_right = 36.0
+offset_bottom = 4.5
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1

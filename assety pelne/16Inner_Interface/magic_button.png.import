@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://diiif120qk1j6"
-path="res://.godot/imported/magic_button.png-97d3e94da17e8efe833681882659c8ed.ctex"
+path="res://.godot/imported/magic_button.png-132840335010d983492c3be6a51f6d86.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assety pelne/UI/PNG/16Inner_Interface/magic_button.png"
-dest_files=["res://.godot/imported/magic_button.png-97d3e94da17e8efe833681882659c8ed.ctex"]
+source_file="res://assety pelne/16Inner_Interface/magic_button.png"
+dest_files=["res://.godot/imported/magic_button.png-132840335010d983492c3be6a51f6d86.ctex"]
 
 [params]
 

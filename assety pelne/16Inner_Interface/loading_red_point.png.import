@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cm51tt3xhw8gl"
-path="res://.godot/imported/loading_red_point.png-1b388a32603ae6c29a68b9071dba19f3.ctex"
+path="res://.godot/imported/loading_red_point.png-31089942417cbcfeba8228860804fd0a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assety pelne/UI/PNG/16Inner_Interface/loading_red_point.png"
-dest_files=["res://.godot/imported/loading_red_point.png-1b388a32603ae6c29a68b9071dba19f3.ctex"]
+source_file="res://assety pelne/16Inner_Interface/loading_red_point.png"
+dest_files=["res://.godot/imported/loading_red_point.png-31089942417cbcfeba8228860804fd0a.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dodpd220cmsjb"
-path="res://.godot/imported/loading_blue_corner1.png-1a0fd221e7aab01d4808c16021055a1a.ctex"
+path="res://.godot/imported/loading_blue_corner1.png-40db29b45fa44471019e751a1c2b6ce7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assety pelne/UI/PNG/16Inner_Interface/loading_blue_corner1.png"
-dest_files=["res://.godot/imported/loading_blue_corner1.png-1a0fd221e7aab01d4808c16021055a1a.ctex"]
+source_file="res://assety pelne/16Inner_Interface/loading_blue_corner1.png"
+dest_files=["res://.godot/imported/loading_blue_corner1.png-40db29b45fa44471019e751a1c2b6ce7.ctex"]
 
 [params]
 

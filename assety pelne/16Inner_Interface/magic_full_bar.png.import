@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dllqbrovec6oh"
-path="res://.godot/imported/magic_full_bar.png-d7c5c39add7259935d291f6e1eb1e50c.ctex"
+path="res://.godot/imported/magic_full_bar.png-8401a3d93a235fd008694d6014e84cae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assety pelne/UI/PNG/16Inner_Interface/magic_full_bar.png"
-dest_files=["res://.godot/imported/magic_full_bar.png-d7c5c39add7259935d291f6e1eb1e50c.ctex"]
+source_file="res://assety pelne/16Inner_Interface/magic_full_bar.png"
+dest_files=["res://.godot/imported/magic_full_bar.png-8401a3d93a235fd008694d6014e84cae.ctex"]
 
 [params]
 

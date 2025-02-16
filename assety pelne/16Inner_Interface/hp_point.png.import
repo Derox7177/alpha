@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://q63biscr8kpv"
-path="res://.godot/imported/hp_point.png-5e2da95e6654a2e96b246bf7635e5219.ctex"
+path="res://.godot/imported/hp_point.png-347556915bf6829243027f907964fce9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assety pelne/UI/PNG/16Inner_Interface/hp_point.png"
-dest_files=["res://.godot/imported/hp_point.png-5e2da95e6654a2e96b246bf7635e5219.ctex"]
+source_file="res://assety pelne/16Inner_Interface/hp_point.png"
+dest_files=["res://.godot/imported/hp_point.png-347556915bf6829243027f907964fce9.ctex"]
 
 [params]
 

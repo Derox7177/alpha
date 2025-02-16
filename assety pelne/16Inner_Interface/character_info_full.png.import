@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cpwq5p8l03f3r"
-path="res://.godot/imported/character_info_full.png-aa05d23a7290cb9906a67ec3c40b11d6.ctex"
+path="res://.godot/imported/character_info_full.png-0f2b6a55522f8198b8bf82833853c9bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assety pelne/UI/PNG/16Inner_Interface/character_info_full.png"
-dest_files=["res://.godot/imported/character_info_full.png-aa05d23a7290cb9906a67ec3c40b11d6.ctex"]
+source_file="res://assety pelne/16Inner_Interface/character_info_full.png"
+dest_files=["res://.godot/imported/character_info_full.png-0f2b6a55522f8198b8bf82833853c9bc.ctex"]
 
 [params]
 
