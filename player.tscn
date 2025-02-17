@@ -1,9 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://dyp48q43ps4t7"]
+[gd_scene load_steps=34 format=3 uid="uid://dyp48q43ps4t7"]
 
 [ext_resource type="Texture2D" uid="uid://gii0auaqcfy6" path="res://assety pelne/Tiny Swords (Update 010)/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png" id="1_3bcpf"]
 [ext_resource type="Script" path="res://player.gd" id="1_5o41a"]
 [ext_resource type="PackedScene" uid="uid://c1x2682el81mg" path="res://scenes/fireball.tscn" id="2_nyug8"]
 [ext_resource type="PackedScene" uid="uid://baauwll7o3rgr" path="res://scenes/blackhole.tscn" id="3_a2hj6"]
+[ext_resource type="PackedScene" uid="uid://botao8faitaek" path="res://scenes/lighting.tscn" id="4_e8v18"]
+[ext_resource type="PackedScene" uid="uid://j3u17h2ryf14" path="res://scenes/shield.tscn" id="5_ksl54"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hluu7"]
 atlas = ExtResource("1_3bcpf")
@@ -211,6 +213,8 @@ position = Vector2(283, 100)
 script = ExtResource("1_5o41a")
 fireball_scene = ExtResource("2_nyug8")
 blackhole_scene = ExtResource("3_a2hj6")
+lighting_scene = ExtResource("4_e8v18")
+shield_scene = ExtResource("5_ksl54")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

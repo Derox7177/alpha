@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://7fgvcxmyi1jv"]
+[gd_scene load_steps=11 format=3 uid="uid://7fgvcxmyi1jv"]
 
 [ext_resource type="PackedScene" uid="uid://dyp48q43ps4t7" path="res://player.tscn" id="2_aqpvn"]
 [ext_resource type="PackedScene" uid="uid://cht6uvdpg5428" path="res://enemy.tscn" id="2_q6x8f"]
@@ -11,12 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://2fca3qku7wwa" path="res://magic/Icons/8-Shield.png" id="9_0r5gh"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_f4ib4"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vd8jy"]
-bg_color = Color(0.00184107, 0.00184107, 0.00184107, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhy5l"]
-bg_color = Color(0.0145288, 0.456915, 0.741006, 1)
 
 [node name="Game" type="Node2D"]
 
@@ -251,13 +245,13 @@ text = "4"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="shieldBar" type="ProgressBar" parent="UI"]
-offset_left = 6.0
-offset_top = 401.0
-offset_right = 56.0
-offset_bottom = 408.0
-theme_override_styles/background = SubResource("StyleBoxFlat_vd8jy")
-theme_override_styles/fill = SubResource("StyleBoxFlat_mhy5l")
+[node name="shieldBar" type="ProgressBar" parent="UI/shieldUI"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 43.0
+offset_right = 38.0
+offset_bottom = 48.0
 max_value = 80.0
 value = 80.0
+fill_mode = 1
 show_percentage = false

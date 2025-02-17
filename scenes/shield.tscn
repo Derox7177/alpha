@@ -1,0 +1,83 @@
+[gd_scene load_steps=13 format=3 uid="uid://j3u17h2ryf14"]
+
+[ext_resource type="Script" path="res://script/shield.gd" id="1_bsl5j"]
+[ext_resource type="Texture2D" uid="uid://2uthmdshf208" path="res://magic/8 Shield/Shield.png" id="1_qog03"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5v5t"]
+atlas = ExtResource("1_qog03")
+region = Rect2(0, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lma2g"]
+atlas = ExtResource("1_qog03")
+region = Rect2(72, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpl8s"]
+atlas = ExtResource("1_qog03")
+region = Rect2(144, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wymjt"]
+atlas = ExtResource("1_qog03")
+region = Rect2(216, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlgr0"]
+atlas = ExtResource("1_qog03")
+region = Rect2(288, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3ryx"]
+atlas = ExtResource("1_qog03")
+region = Rect2(360, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usmtj"]
+atlas = ExtResource("1_qog03")
+region = Rect2(432, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_coqu2"]
+atlas = ExtResource("1_qog03")
+region = Rect2(504, 0, 72, 72)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gdge2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5v5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lma2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpl8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wymjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlgr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3ryx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usmtj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_coqu2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c1cmb"]
+radius = 22.0907
+
+[node name="shield" type="Area2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_bsl5j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gdge2")
+frame = 5
+frame_progress = 0.0961568
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_c1cmb")

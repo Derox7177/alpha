@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var atk: int = 5  # Siła ataku przeciwnika
 @export var hp: int = 50  # Punkty życia przeciwnika
 @export var attack_range: float = 50.0  # Zasięg ataku wroga
-@export var attack_interval: float = 5.0  # Czas między atakami
+@export var attack_interval: float = 10.0  # Czas między atakami
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D  # Animacja
 @onready var health_bar: ProgressBar = $HealthBar  # Pasek HP
@@ -71,29 +71,18 @@ func attack():
 	anim.play("attack")  # Odtworzenie animacji ataku
 
 	if target and target is CharacterBody2D:
-		# 🔹 Sprawdzenie, czy gracz ma aktywną tarczę
-		var shield = target.get_node_or_null("Shield")  
+		target.hp -= atk  # Wróg zadaje obrażenia graczowi
+		print("Wróg zaatakował gracza! HP gracza:", target.hp)
 
-		if shield:
-			print("🛡️ Wróg trafił w tarczę! Zadaję", atk, "obrażeń tarczy.")
-			shield.absorb_damage(atk)  # 🔹 Przekazanie obrażeń do tarczy
-		else:
-			# 🔹 Jeśli gracz nie ma tarczy, otrzymuje obrażenia
-			target.hp -= atk  
-			print("⚔️ Wróg zaatakował gracza! HP gracza:", target.hp)
-
-			# Jeśli gracz zginął, usuń go
-			if target.hp <= 0:
-				print("☠️ Gracz został pokonany!")
-				target.queue_free()
+		# Jeśli gracz zginął, usuń go
+		if target.hp <= 0:
+			print("Gracz został pokonany!")
+			target.queue_free()
 
 	# Czekanie na zakończenie animacji ataku
 	await anim.animation_finished  
 	is_attacking = false  # Flaga ataku wraca do false
 	anim.play("idle")  # Powrót do idle
-
-
-
 
 func take_damage(damage: int):
 	hp = max(0, hp - damage)  # Zapewnia, że HP nie spadnie poniżej 0

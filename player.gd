@@ -9,10 +9,14 @@ extends CharacterBody2D
 @export var attack_range: float = 100.0     # Zasięg ataku melee
 @export var fireball_scene: PackedScene     # Scena fireballa
 @export var blackhole_scene: PackedScene
+@export var lighting_scene: PackedScene
+@export var shield_scene: PackedScene
 @export var max_mana: int = 100             # Maksymalna ilość many
 var mana: int = max_mana                    # Aktualna ilość many
 var fireball_cost: int = 10                 # Koszt many za rzut fireballa
 var blackhole_cost: int = 10 
+var lighting_cost: int = 10
+var shield_cost: int = 10
 
 # Referencje do elementów UI – ustawione według ścieżek w drzewie scen:
 @onready var hp_bar: TextureProgressBar = get_node("/root/Game/UI/Control/VBoxContainer/HPBar")
@@ -25,6 +29,14 @@ var blackhole_cost: int = 10
 @onready var blackhole_icon: TextureRect = get_node("/root/Game/UI/blackholeUI/blackholeIcon")
 @onready var blackhole_cd_label: Label = get_node("/root/Game/UI/blackholeUI/blackholeCDLabel")
 @onready var blackhole_key_label: Label = get_node("/root/Game/UI/blackholeUI/blackholeKeyLabel")
+@onready var lighting_icon: TextureRect = get_node("/root/Game/UI/lightingUI/lightingIcon")
+@onready var lighting_cd_label: Label = get_node("/root/Game/UI/lightingUI/lightingCDLabel")
+@onready var lighting_key_label: Label = get_node("/root/Game/UI/lightingUI/lightingKeyLabel")
+@onready var shield_icon: TextureRect = get_node("/root/Game/UI/shieldUI/shieldIcon")
+@onready var shield_cd_label: Label = get_node("/root/Game/UI/shieldUI/shieldCDLabel")
+@onready var shield_key_label: Label = get_node("/root/Game/UI/shieldUI/shieldKeyLabel")
+@onready var shield_bar: ProgressBar = get_node("/root/Game/UI//shieldBar")
+
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D  # Referencja do animacji gracza
 
@@ -32,6 +44,8 @@ var blackhole_cost: int = 10
 var is_attacking: bool = false           # Flaga ataku
 var fireball_cd: bool = false   
 var blackhole_cd: bool = false          # Flaga cooldownu fireballa
+var lighting_cd: bool = false
+var shield_cd: bool = false
 # W tej wersji nie używamy już 'facing_direction', ponieważ fireball celujemy w myszkę
 
 func _ready():
@@ -84,6 +98,12 @@ func _physics_process(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("two") and not fireball_cd:
 		cast_blackhole()
+		
+	if Input.is_action_just_pressed("three") and not fireball_cd:
+		cast_lighting()
+		
+	if Input.is_action_just_pressed("four") and not fireball_cd:
+		cast_shield()
 
 func attack():
 	# Obsługa ataku melee
@@ -207,3 +227,113 @@ func cast_blackhole():
 	blackhole_cd_label.text = ""
 	blackhole_icon.modulate = Color(1, 1, 1, 1)  # Przywracamy oryginalny kolor ikony
 	blackhole_cd = false
+	
+func cast_lighting():
+	# Obsługa rzutu lightinga
+	if lighting_cd:
+		return
+	if lighting_scene == null:
+		print("❌ Błąd: lighting_scene nie jest przypisane!")
+		return
+	if mana < lighting_cost:
+		print("❌ Brak many na lighting!")
+		return
+
+	# Zużywamy manę i aktualizujemy UI
+	mana -= lighting_cost
+	_update_ui()
+	print("🔥 Lighting rzucony! Pozostała mana:", mana)
+
+	lighting_cd = true
+	lighting_icon.modulate = Color(0.5, 0.5, 0.5, 1)  # Efekt wizualny – przyciemnienie ikony
+	lighting_cd_label.text = "3s"  # Wyświetlenie tekstu cooldown
+
+	# Instancjujemy Lighting
+	var lighting = lighting_scene.instantiate() as Area2D
+
+	# 🔹 Pobranie pozycji kursora
+	var mouse_pos = get_global_mouse_position()
+	var direction_to_mouse = (mouse_pos - global_position).normalized()  # Wektor kierunku do myszki
+
+	# 🔹 Pobranie CollisionShape2D gracza
+	var player_collision = $CollisionShape2D
+	var offset = Vector2.ZERO  # Domyślne przesunięcie
+
+	if player_collision:
+		var collision_size = player_collision.shape.get_rect().size  
+		
+		# 🔹 Znalezienie największego wymiaru kolizji (dla poprawnego odsunięcia)
+		var max_radius = max(collision_size.x, collision_size.y) / 2  
+
+		# 🔹 Ustawienie pozycji Lightning minimalnie poza kolizją
+		offset = direction_to_mouse * (max_radius + 30)  # +5 jednostek, żeby był tuż za kolizją
+
+	lighting.global_position = global_position + offset  # Ustawienie pozycji Lighting
+
+	# Dodanie Lighting do sceny
+	get_parent().add_child(lighting)
+
+	# 🔹 Lighting porusza się w stronę kursora
+	lighting.set_direction(direction_to_mouse)
+
+	print("🔥 Gracz użył Lightinga w kierunku myszy!")
+
+	# Odliczanie cooldownu (3 sekundy)
+	for i in range(3, 0, -1):
+		await get_tree().create_timer(1.0).timeout
+		lighting_cd_label.text = str(i) + "s"
+
+	lighting_cd_label.text = ""
+	lighting_icon.modulate = Color(1, 1, 1, 1)  # Przywracamy oryginalny kolor ikony
+	lighting_cd = false
+
+func cast_shield():
+	if shield_cd:
+		print("❌ Tarcza jest na cooldownie!")
+		return
+	if shield_scene == null:
+		print("❌ Błąd: Shield.tscn nie jest przypisane!")
+		return
+	if mana < shield_cost:
+		print("❌ Brak many na tarczę!")
+		return
+
+	# 🔹 Zużycie many
+	mana -= shield_cost
+	_update_ui()
+	print("🛡️ Gracz aktywował tarczę!")
+
+	# 🔹 Sprawdź, czy gracz już ma tarczę (unikamy dodania kilku naraz)
+	if has_node("Shield"):
+		print("⚠️ Gracz już ma aktywną tarczę!")
+		return
+
+	# 🔹 Tworzymy tarczę i przypisujemy gracza
+	var shield = shield_scene.instantiate() as Area2D
+	shield.name = "Shield"  # Upewniamy się, że ma poprawną nazwę
+	shield.player = self  # Przypisanie gracza do tarczy
+	add_child(shield)  # Dodanie tarczy jako dziecko gracza
+
+	# 🔹 Powiązanie tarczy z paskiem ShieldBar
+	shield.shield_bar = shield_bar  
+	shield_bar.max_value = shield.max_absorb  # Ustawienie maksymalnej wartości
+	shield_bar.value = shield.max_absorb  # Ustawienie pełnej wytrzymałości tarczy
+	shield_bar.visible = true  # Pokazanie paska
+
+	print("🛡️ Tarcza została dodana do gracza! Aktualne dzieci:", get_children())
+
+	# 🔹 Ustawienie cooldownu (8 sekund)
+	shield_cd = true  
+	shield_icon.modulate = Color(0.5, 0.5, 0.5, 1)  
+	shield_cd_label.text = "8s"  
+
+	# 🔹 Odliczanie cooldownu (pętla odliczająca 8 sekund)
+	for i in range(8, 0, -1):
+		await get_tree().create_timer(1.0).timeout
+		shield_cd_label.text = str(i) + "s"
+
+	# 🔹 Reset cooldownu
+	shield_cd_label.text = ""  
+	shield_icon.modulate = Color(1, 1, 1, 1)  
+	shield_cd = false
+	print("🛡️ Tarcza gotowa do ponownego użycia!")
