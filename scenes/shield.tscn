@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://j3u17h2ryf14"]
 
-[ext_resource type="Script" path="res://script/shield.gd" id="1_bsl5j"]
+[ext_resource type="Script" uid="uid://cht1d1okycqj4" path="res://script/shield.gd" id="1_bsl5j"]
 [ext_resource type="Texture2D" uid="uid://2uthmdshf208" path="res://magic/8 Shield/Shield.png" id="1_qog03"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v5v5t"]

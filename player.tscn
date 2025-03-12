@@ -1,7 +1,7 @@
 [gd_scene load_steps=34 format=3 uid="uid://dyp48q43ps4t7"]
 
 [ext_resource type="Texture2D" uid="uid://gii0auaqcfy6" path="res://assety pelne/Tiny Swords (Update 010)/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png" id="1_3bcpf"]
-[ext_resource type="Script" path="res://player.gd" id="1_5o41a"]
+[ext_resource type="Script" uid="uid://qjt05dxhw8n4" path="res://player.gd" id="1_5o41a"]
 [ext_resource type="PackedScene" uid="uid://c1x2682el81mg" path="res://scenes/fireball.tscn" id="2_nyug8"]
 [ext_resource type="PackedScene" uid="uid://baauwll7o3rgr" path="res://scenes/blackhole.tscn" id="3_a2hj6"]
 [ext_resource type="PackedScene" uid="uid://botao8faitaek" path="res://scenes/lighting.tscn" id="4_e8v18"]

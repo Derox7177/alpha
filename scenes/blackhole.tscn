@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://baauwll7o3rgr"]
 
-[ext_resource type="Script" path="res://blackhole.gd" id="1_mf0eh"]
+[ext_resource type="Script" uid="uid://ddrbodud4g6cm" path="res://blackhole.gd" id="1_mf0eh"]
 [ext_resource type="Texture2D" uid="uid://7fpy2fe21xyk" path="res://magic/9 Black hole/Black-hole.png" id="2_tjw5f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nhs1i"]

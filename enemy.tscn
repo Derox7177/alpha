@@ -1,6 +1,6 @@
 [gd_scene load_steps=37 format=3 uid="uid://cht6uvdpg5428"]
 
-[ext_resource type="Script" path="res://enemy.gd" id="1_fudga"]
+[ext_resource type="Script" uid="uid://bxl4hpn0ncdp0" path="res://enemy.gd" id="1_fudga"]
 [ext_resource type="Texture2D" uid="uid://hoq1j3sbe08g" path="res://assety pelne/Tiny Swords (Update 010)/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="1_mv2sw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vj5dq"]
@@ -256,7 +256,7 @@ metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_p0uw3")
-animation = &"death"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

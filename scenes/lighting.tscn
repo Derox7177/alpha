@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://botao8faitaek"]
 
-[ext_resource type="Script" path="res://lighting.gd" id="1_165tk"]
+[ext_resource type="Script" uid="uid://2lumeh45jpyu" path="res://lighting.gd" id="1_165tk"]
 [ext_resource type="Texture2D" uid="uid://85svrv2qjoxu" path="res://magic/1 Lightning/Lightning.png" id="1_nkc64"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nhve0"]
