@@ -209,7 +209,6 @@ animations = [{
 radius = 45.0111
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-position = Vector2(283, 100)
 script = ExtResource("1_5o41a")
 fireball_scene = ExtResource("2_nyug8")
 blackhole_scene = ExtResource("3_a2hj6")
@@ -223,5 +222,5 @@ animation = &"attack2"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, -6)
 shape = SubResource("CircleShape2D_a7uir")
+debug_color = Color(0.884895, 0.332465, 0, 0.42)

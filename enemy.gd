@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var hp: int = 50  # Punkty życia przeciwnika
 @export var attack_range: float = 50.0  # Zasięg ataku wroga
 @export var attack_interval: float = 5.0  # Czas między atakami
+@export var exp_reward: int = 50
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D  # Animacja
 @onready var health_bar: ProgressBar = $HealthBar  # Pasek HP
@@ -108,6 +109,11 @@ func take_damage(damage: int):
 
 func die():
 	print("💀 Wróg został pokonany!")
+
+	# Przekazanie EXP graczowi
+	if target and target.has_method("add_exp"):  # Sprawdza, czy gracz ma funkcję dodającą EXP
+		target.add_exp(exp_reward)
+		print("🎉 Gracz otrzymał", exp_reward, "EXP!")
 
 	set_physics_process(false)  # Wyłączenie fizyki, wróg się nie porusza
 	velocity = Vector2.ZERO  # Natychmiastowe zatrzymanie

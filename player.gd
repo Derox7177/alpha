@@ -35,7 +35,16 @@ var shield_cost: int = 10
 @onready var shield_icon: TextureRect = get_node("/root/Game/UI/shieldUI/shieldIcon")
 @onready var shield_cd_label: Label = get_node("/root/Game/UI/shieldUI/shieldCDLabel")
 @onready var shield_key_label: Label = get_node("/root/Game/UI/shieldUI/shieldKeyLabel")
-@onready var shield_bar: ProgressBar = get_node("/root/Game/UI//shieldBar")
+@onready var shield_bar: ProgressBar = get_node("/root/Game/UI/shieldUI/shieldBar")
+@onready var exp_bar: TextureProgressBar = get_node("/root/Game/UI/ExpBar/ExpBar")
+@onready var stat_panel: Control = get_node("/root/Game/UI/StatPanel")
+@onready var stat_points_label: Label = get_node("/root/Game/UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel")
+@onready var speed_label: Label = get_node("/root/Game/UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel/SpeedButton/SpeedLabel")
+@onready var attack_label: Label = get_node("/root/Game/UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel/AttackButton/AttackLabel")
+@onready var hp_label_stat: Label = get_node("/root/Game/UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel/HpButton/HpLabel")
+
+
+
 
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D  # Referencja do animacji gracza
@@ -46,7 +55,39 @@ var fireball_cd: bool = false
 var blackhole_cd: bool = false          # Flaga cooldownu fireballa
 var lighting_cd: bool = false
 var shield_cd: bool = false
+var exp: int = 0
+var exp_to_next_level: int = 100
+var level: int = 1
+var stat_points: int = 0
 # W tej wersji nie używamy już 'facing_direction', ponieważ fireball celujemy w myszkę
+
+# Funkcja dodająca EXP i awansująca gracza
+func add_exp(amount: int):
+	exp += amount
+	while exp >= exp_to_next_level:
+		exp -= exp_to_next_level
+		level_up()
+
+func level_up():
+	level += 1
+	exp_to_next_level = int(exp_to_next_level * 1.5)  # Skaluje EXP do kolejnego poziomu
+	stat_points += 1
+	print("🎉 Level Up! Nowy poziom:", level)
+
+# Funkcja ulepszania statystyk
+func upgrade_stat(stat: String):
+	if stat_points > 0:
+		if stat == "speed":
+			speed += 10
+		elif stat == "attack":
+			atk += 10
+		elif stat == "hp":
+			max_hp += 10
+		stat_points -= 1
+		_update_ui()
+		print("📈 Statystyka", stat, "zwiększona!")
+
+
 
 func _ready():
 	# Sprawdzamy referencje UI
@@ -64,9 +105,7 @@ func _ready():
 	add_child(mana_regen_timer)
 
 func _physics_process(delta: float) -> void:
-	# Obsługa ruchu gracza (jeśli nie atakuje)
-	if is_attacking:
-		return
+
 
 	# Pobieramy wejście z klawiatury dla ruchu (osie X i Y)
 	var direction_x := Input.get_axis("left", "right")
@@ -104,6 +143,16 @@ func _physics_process(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("four") and not fireball_cd:
 		cast_shield()
+
+func _on_speed_button_pressed():
+	upgrade_stat("speed")
+
+func _on_attack_button_pressed():
+	upgrade_stat("attack")
+
+func _on_hp_button_pressed():
+	upgrade_stat("hp")
+
 
 func attack():
 	# Obsługa ataku melee
@@ -164,11 +213,16 @@ func cast_fireball():
 	fireball_cd = false
 
 func _update_ui():
-	# Aktualizacja wyświetlanych wartości HP i many
+	exp_bar.value = exp
+	exp_bar.max_value = exp_to_next_level
+	stat_points_label.text = "Punkty: " + str(stat_points)
+	speed_label.text = "Speed: " + str(speed)
+	attack_label.text = "Attack: " + str(atk)
+	hp_label_stat.text = "HP: " + str(max_hp)
 	hp_bar.value = hp
 	mana_bar.value = mana
-	hp_label.text = str(hp, " / ", max_hp)
-	mana_label.text = str(mana, " / ", max_mana)
+	hp_label.text = str(hp) + " / " + str(max_hp)
+	mana_label.text = str(mana) + " / " + str(max_mana)
 
 func take_damage(amount: int):
 	# Obsługa otrzymywania obrażeń przez gracza

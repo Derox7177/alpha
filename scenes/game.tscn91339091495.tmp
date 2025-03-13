@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://7fgvcxmyi1jv"]
+[gd_scene load_steps=34 format=4 uid="uid://7fgvcxmyi1jv"]
 
 [ext_resource type="Texture2D" uid="uid://ccc7byh3fgw4l" path="res://assety pelne/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="1_dinhu"]
 [ext_resource type="PackedScene" uid="uid://dyp48q43ps4t7" path="res://player.tscn" id="2_aqpvn"]
@@ -335,18 +335,6 @@ bg_color = Color(0.00184107, 0.00184107, 0.00184107, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhy5l"]
 bg_color = Color(0.0145288, 0.456915, 0.741006, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_264po"]
-font_size = 8
-
-[sub_resource type="LabelSettings" id="LabelSettings_1kice"]
-font_size = 8
-
-[sub_resource type="LabelSettings" id="LabelSettings_5newe"]
-font_size = 8
-
-[sub_resource type="LabelSettings" id="LabelSettings_37s47"]
-font_size = 8
-
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
 
@@ -364,16 +352,10 @@ tile_map_data = PackedByteArray("AAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAA
 tile_set = SubResource("TileSet_rysoc")
 use_kinematic_bodies = true
 
-<<<<<<< Updated upstream
-[node name="Layer2" type="TileMapLayer" parent="TileMap"]
-use_parent_material = true
-tile_set = SubResource("TileSet_rysoc")
-=======
 [node name="obiekty" type="TileMapLayer" parent="Tilemaps"]
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAGAA8AAgAAAAAAAQAYAA8AAgAAAAAAAQAdAAkAAgAAAAAAAQAYAAQAAgAAAAAAAQAhAAIAAgAAAAAAAQAOAA0AAgAAAAAAAQALAAMAAgAAAAAAAQATABIAAgAAAAAAAQAGAAYAAgAAAAAAAQD+/xEAAwAAAAAAAAD9/wgAAwAAAAAAAAD8/wQAAwAAAAAAAAD+/wIAAwAAAAAAAAD8/woAAwAAAAAAAAAnAAYAAwAAAAAAAAAnAAgAAwAAAAAAAAAoAAAAAwAAAAAAAAApAAIAAwAAAAAAAAAGABUAAwAAAAAAAAANABUAAwAAAAAAAAAdABQAAwAAAAAAAAAkAAYAAwAAAAAAAAAlABAAAwAAAAAAAAArAA8AAwAAAAAAAAAoABUAAwAAAAAAAAAqAAsAAwAAAAAAAAAkABUAAwAAAAAAAAD8/w8AAwAAAAAAAAAVAP3/AwAAAAAAAAAKAP//AwAAAAAAAAAFAP7/AwAAAAAAAAABAP//AwAAAAAAAAAhAP//AwAAAAAAAAAiAP7/AwAAAAAAAAAbAP//AwAAAAAAAAD7/xIAAwAAAAAAAAAEAP7/AwAAAAAAAAA=")
 tile_set = SubResource("TileSet_1kice")
->>>>>>> Stashed changes
 
 [node name="Node2D" type="Node2D" parent="."]
 
@@ -413,10 +395,6 @@ texture = ExtResource("6_ca42v")
 position = Vector2(207, 432)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-<<<<<<< Updated upstream
-visible = false
-=======
->>>>>>> Stashed changes
 
 [node name="Enemy" parent="." instance=ExtResource("2_q6x8f")]
 position = Vector2(1106, 174)
@@ -678,66 +656,44 @@ offset_bottom = 62.0
 
 [node name="PanelContainer" type="PanelContainer" parent="UI/StatPanel"]
 layout_mode = 0
-offset_left = -312.0
-offset_top = 20.0
-offset_right = -272.0
-offset_bottom = 60.0
-scale = Vector2(6.18263, 4.15174)
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/StatPanel/PanelContainer"]
 layout_mode = 2
 
 [node name="StatPointsLabel" type="Label" parent="UI/StatPanel/PanelContainer/VBoxContainer"]
 layout_mode = 2
-label_settings = SubResource("LabelSettings_264po")
 
 [node name="SpeedButton" type="Button" parent="UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel"]
 layout_mode = 0
-offset_left = 31.9975
-offset_top = 13.4975
-offset_right = 39.9975
-offset_bottom = 21.4975
+offset_right = 8.0
+offset_bottom = 8.0
 
 [node name="SpeedLabel" type="Label" parent="UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel/SpeedButton"]
 layout_mode = 0
-offset_left = -31.0822
-offset_top = -0.00915074
-offset_right = 8.91783
-offset_bottom = 22.9908
-scale = Vector2(0.699702, 0.343711)
-label_settings = SubResource("LabelSettings_1kice")
+offset_right = 40.0
+offset_bottom = 23.0
 
 [node name="AttackButton" type="Button" parent="UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel"]
 layout_mode = 0
-offset_left = 32.1659
-offset_top = 22.2387
-offset_right = 40.1659
-offset_bottom = 30.2387
+offset_right = 8.0
+offset_bottom = 8.0
 
 [node name="AttackLabel" type="Label" parent="UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel/AttackButton"]
 layout_mode = 0
-offset_left = -31.6167
-offset_top = 0.40242
-offset_right = 8.38331
-offset_bottom = 23.4024
-scale = Vector2(0.777978, 0.350227)
-label_settings = SubResource("LabelSettings_5newe")
+offset_right = 40.0
+offset_bottom = 23.0
 
 [node name="HpButton" type="Button" parent="UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel"]
 layout_mode = 0
-offset_left = 32.1659
-offset_top = 30.5943
-offset_right = 40.1659
-offset_bottom = 38.5943
+offset_right = 8.0
+offset_bottom = 8.0
 
 [node name="HpLabel" type="Label" parent="UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel/HpButton"]
 layout_mode = 0
-offset_left = -30.8844
-offset_top = 2.64481
-offset_right = 9.11555
-offset_bottom = 25.6448
-scale = Vector2(0.73258, 0.352225)
-label_settings = SubResource("LabelSettings_37s47")
+offset_right = 40.0
+offset_bottom = 23.0
 
 [node name="ExpBar" type="Control" parent="UI"]
 layout_mode = 3

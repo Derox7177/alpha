@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=15 format=4 uid="uid://bbp0lj84ybsx0"]
+=======
+[gd_scene load_steps=15 format=4 uid="uid://byjf60legadlr"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Texture2D" uid="uid://ccc7byh3fgw4l" path="res://assety pelne/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="1_5adim"]
 [ext_resource type="Texture2D" uid="uid://cf8kunqtwi2ho" path="res://assety pelne/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Elevation.png" id="2_i3hre"]
