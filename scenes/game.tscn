@@ -313,7 +313,7 @@ tile_map_data = PackedByteArray("AAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAA
 tile_set = SubResource("TileSet_rysoc")
 use_kinematic_bodies = true
 
-[node name="Layer0" type="TileMapLayer" parent="TileMap"]
+[node name="Layer2" type="TileMapLayer" parent="TileMap"]
 use_parent_material = true
 tile_set = SubResource("TileSet_rysoc")
 
@@ -356,7 +356,6 @@ position = Vector2(398, 359)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 visible = false
-zoom = Vector2(1.2, 1.2)
 
 [node name="Enemy" parent="." instance=ExtResource("2_q6x8f")]
 position = Vector2(1106, 174)
