@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var atk: int = 10                   # Siła ataku melee
 @export var hp: int = 100                   # Aktualne punkty życia
 @export var max_hp: int = 100               # Maksymalne punkty życia
+@export var hp_regen: int = 1
 @export var attack_range: float = 100.0     # Zasięg ataku melee
 @export var fireball_scene: PackedScene     # Scena fireballa
 @export var blackhole_scene: PackedScene
@@ -83,13 +84,26 @@ func upgrade_stat(stat: String):
 			atk += 10
 		elif stat == "hp":
 			max_hp += 10
+			hp += 10
 		stat_points -= 1
 		_update_ui()
 		print("📈 Statystyka", stat, "zwiększona!")
+	else:
+		print("❌ Brak dostępnych punktów statystyk!")
 
 
 
 func _ready():
+	 # Podpinanie sygnałów do przycisków (upewnij się, że są poprawne)
+	var speed_button = get_node("/root/Game/UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel/SpeedButton")
+	var attack_button = get_node("/root/Game/UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel/AttackButton")
+	var hp_button = get_node("/root/Game/UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel/HpButton")
+
+	if speed_button: speed_button.pressed.connect(_on_speed_button_pressed)
+	if attack_button: attack_button.pressed.connect(_on_attack_button_pressed)
+	if hp_button: hp_button.pressed.connect(_on_hp_button_pressed)
+
+
 	# Sprawdzamy referencje UI
 	if not hp_bar or not mana_bar or not hp_label or not mana_label:
 		print("❌ Błąd: Brak referencji do UI!")
@@ -155,22 +169,32 @@ func _on_hp_button_pressed():
 
 
 func attack():
-	# Obsługa ataku melee
 	if is_attacking:
 		return
 	is_attacking = true
-	anim.play("attack")  # Uruchamiamy animację ataku
+	anim.play("attack")
+	print("🗡️ Animacja ataku rozpoczęta!")
 
-	# Pobieramy przeciwników z grupy "enemy" i sprawdzamy zasięg
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	for enemy in enemies:
 		if enemy is CharacterBody2D and global_position.distance_to(enemy.global_position) <= attack_range:
-			enemy.take_damage(atk)  # Zadajemy obrażenia
-			print("Gracz zaatakował przeciwnika!")
-	
-	await anim.animation_finished  # Czekamy na zakończenie animacji ataku
+			enemy.take_damage(atk)
+			print("🎯 Trafienie!")
+
+	print("Czekam na zakończenie animacji ataku...")
+	await anim.animation_finished
+	print("✅ Animacja ataku zakończona!")
+
 	is_attacking = false
-	anim.play("idle")  # Powrót do animacji bezczynności
+	anim.play("idle")
+
+
+func _on_attack_finished():
+	is_attacking = false
+	anim.play("idle")
+	print("Atak zakończony, można ponownie atakować.")
+
+
 
 func cast_fireball():
 	# Obsługa rzutu fireballa
