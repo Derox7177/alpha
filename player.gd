@@ -38,6 +38,7 @@ var shield_cost: int = 10
 @onready var shield_key_label: Label = get_node("/root/Game/UI/shieldUI/shieldKeyLabel")
 @onready var shield_bar: ProgressBar = get_node("/root/Game/UI/shieldUI/shieldBar")
 @onready var exp_bar: TextureProgressBar = get_node("/root/Game/UI/ExpBar/ExpBar")
+@onready var lvlchara: Label = get_node("/root/Game/UI/ExpBar/lvlchara")
 @onready var stat_panel: Control = get_node("/root/Game/UI/StatPanel")
 @onready var stat_points_label: Label = get_node("/root/Game/UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel")
 @onready var speed_label: Label = get_node("/root/Game/UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel/SpeedButton/SpeedLabel")
@@ -68,12 +69,14 @@ func add_exp(amount: int):
 	while exp >= exp_to_next_level:
 		exp -= exp_to_next_level
 		level_up()
+	_update_ui()  # Aktualizujemy UI po zmianie EXP
 
 func level_up():
 	level += 1
-	exp_to_next_level = int(exp_to_next_level * 1.5)  # Skaluje EXP do kolejnego poziomu
+	exp_to_next_level += 10  # Każdy nowy poziom wymaga o 10 EXP więcej
 	stat_points += 1
 	print("🎉 Level Up! Nowy poziom:", level)
+	_update_ui()  # Aktualizacja interfejsu po awansie
 
 # Funkcja ulepszania statystyk
 func upgrade_stat(stat: String):
@@ -91,9 +94,13 @@ func upgrade_stat(stat: String):
 	else:
 		print("❌ Brak dostępnych punktów statystyk!")
 
-
+func _input(event):
+	if event.is_action_pressed("staty"):
+		stat_panel.visible = not stat_panel.visible  # Przełącz widoczność panelu
 
 func _ready():
+	stat_panel.visible = false  # Ukrywamy panel na starcie
+	
 	 # Podpinanie sygnałów do przycisków (upewnij się, że są poprawne)
 	var speed_button = get_node("/root/Game/UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel/SpeedButton")
 	var attack_button = get_node("/root/Game/UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel/AttackButton")
@@ -117,9 +124,18 @@ func _ready():
 	mana_regen_timer.one_shot = false
 	mana_regen_timer.timeout.connect(_regenerate_mana)
 	add_child(mana_regen_timer)
+	
+	var hp_regen_timer = Timer.new()
+	hp_regen_timer.wait_time = 1.0
+	hp_regen_timer.autostart = true
+	hp_regen_timer.one_shot = false
+	hp_regen_timer.timeout.connect(_regenerate_hp)
+	add_child(hp_regen_timer)
 
 func _physics_process(delta: float) -> void:
-
+	# Obsługa ruchu gracza (jeśli nie atakuje)
+	if is_attacking:
+		return
 
 	# Pobieramy wejście z klawiatury dla ruchu (osie X i Y)
 	var direction_x := Input.get_axis("left", "right")
@@ -173,7 +189,7 @@ func attack():
 		return
 	is_attacking = true
 	anim.play("attack")
-	print("🗡️ Animacja ataku rozpoczęta!")
+	
 
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	for enemy in enemies:
@@ -181,9 +197,9 @@ func attack():
 			enemy.take_damage(atk)
 			print("🎯 Trafienie!")
 
-	print("Czekam na zakończenie animacji ataku...")
+	
 	await anim.animation_finished
-	print("✅ Animacja ataku zakończona!")
+	
 
 	is_attacking = false
 	anim.play("idle")
@@ -247,7 +263,7 @@ func _update_ui():
 	mana_bar.value = mana
 	hp_label.text = str(hp) + " / " + str(max_hp)
 	mana_label.text = str(mana) + " / " + str(max_mana)
-
+	lvlchara.text = "Lvl: " + str(level)  # Aktualizacja etykiety poziomu
 func take_damage(amount: int):
 	# Obsługa otrzymywania obrażeń przez gracza
 	hp = max(0, min(hp - amount, max_hp))
@@ -264,6 +280,12 @@ func _regenerate_mana():
 	# Regeneracja many (1 mana na sekundę)
 	if mana < max_mana:
 		mana = min(max_mana, mana + 1)
+		_update_ui()
+		
+func _regenerate_hp():
+	# Regeneracja many (1 hp na sekundę)
+	if hp < max_hp:
+		hp = min(max_hp, hp + 1)
 		_update_ui()
 		
 func cast_blackhole():

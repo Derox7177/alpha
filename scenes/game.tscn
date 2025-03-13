@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://7fgvcxmyi1jv"]
+[gd_scene load_steps=36 format=4 uid="uid://7fgvcxmyi1jv"]
 
 [ext_resource type="Texture2D" uid="uid://ccc7byh3fgw4l" path="res://assety pelne/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="1_dinhu"]
 [ext_resource type="PackedScene" uid="uid://dyp48q43ps4t7" path="res://player.tscn" id="2_aqpvn"]
@@ -17,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://dl08ku4gfeug" path="res://assety pelne/Tiny Swords (Update 010)/Deco/03.png" id="13_ir15t"]
 [ext_resource type="Texture2D" uid="uid://y6k1kmbx0crp" path="res://assety pelne/Tiny Swords (Update 010)/Deco/06.png" id="14_ca42v"]
 [ext_resource type="Texture2D" uid="uid://bvqskxhww824q" path="res://assety pelne/Tiny Swords (Update 010)/Deco/16.png" id="15_rysoc"]
+[ext_resource type="Texture2D" uid="uid://bk0chevae33a5" path="res://assety pelne/Tiny Swords (Update 010)/UI/Buttons/Button_Disable.png" id="18_ssvqc"]
+[ext_resource type="Texture2D" uid="uid://ne1u4dy31tmr" path="res://assety pelne/Tiny Swords (Update 010)/UI/Buttons/Button_Red_Pressed.png" id="19_1kice"]
+[ext_resource type="Texture2D" uid="uid://ctn34kbtsnoj2" path="res://assety pelne/Tiny Swords (Update 010)/UI/Buttons/Button_Blue.png" id="20_5newe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ssvqc"]
 texture = ExtResource("3_rysoc")
@@ -312,16 +315,18 @@ bg_color = Color(0.00184107, 0.00184107, 0.00184107, 1)
 bg_color = Color(0.0145288, 0.456915, 0.741006, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_264po"]
+line_spacing = 1.0
 font_size = 8
+outline_size = 2
 
 [sub_resource type="LabelSettings" id="LabelSettings_1kice"]
-font_size = 8
+font_size = 64
 
 [sub_resource type="LabelSettings" id="LabelSettings_5newe"]
-font_size = 8
+font_size = 64
 
 [sub_resource type="LabelSettings" id="LabelSettings_37s47"]
-font_size = 8
+font_size = 64
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -636,14 +641,15 @@ offset_left = 552.0
 offset_top = 22.0
 offset_right = 592.0
 offset_bottom = 62.0
+scale = Vector2(1.44, 1)
 
 [node name="PanelContainer" type="PanelContainer" parent="UI/StatPanel"]
 layout_mode = 0
-offset_left = -312.0
+offset_left = -302.084
 offset_top = 20.0
-offset_right = -272.0
+offset_right = -262.084
 offset_bottom = 60.0
-scale = Vector2(6.18263, 4.15174)
+scale = Vector2(6.54263, 4.15174)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/StatPanel/PanelContainer"]
 layout_mode = 2
@@ -651,21 +657,24 @@ layout_mode = 2
 [node name="StatPointsLabel" type="Label" parent="UI/StatPanel/PanelContainer/VBoxContainer"]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_264po")
+vertical_alignment = 1
 
 [node name="SpeedButton" type="Button" parent="UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel"]
 layout_mode = 0
 offset_left = 31.9975
 offset_top = 13.4975
-offset_right = 39.9975
-offset_bottom = 21.4975
+offset_right = 103.997
+offset_bottom = 85.4975
+scale = Vector2(0.1, 0.1)
+icon = ExtResource("18_ssvqc")
 
 [node name="SpeedLabel" type="Label" parent="UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel/SpeedButton"]
 layout_mode = 0
-offset_left = -31.0822
-offset_top = -0.00915074
-offset_right = 8.91783
-offset_bottom = 22.9908
-scale = Vector2(0.699702, 0.343711)
+offset_left = -309.276
+offset_top = -2.50044
+offset_right = -269.276
+offset_bottom = 20.4996
+scale = Vector2(0.8, 0.8)
 label_settings = SubResource("LabelSettings_1kice")
 
 [node name="AttackButton" type="Button" parent="UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel"]
@@ -674,14 +683,15 @@ offset_left = 32.1659
 offset_top = 22.2387
 offset_right = 40.1659
 offset_bottom = 30.2387
+scale = Vector2(0.1, 0.1)
+icon = ExtResource("19_1kice")
 
 [node name="AttackLabel" type="Label" parent="UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel/AttackButton"]
 layout_mode = 0
-offset_left = -31.6167
-offset_top = 0.40242
-offset_right = 8.38331
-offset_bottom = 23.4024
-scale = Vector2(0.777978, 0.350227)
+offset_left = -309.432
+offset_top = -8.01907
+offset_right = -269.432
+offset_bottom = 14.9809
 label_settings = SubResource("LabelSettings_5newe")
 
 [node name="HpButton" type="Button" parent="UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel"]
@@ -690,28 +700,46 @@ offset_left = 32.1659
 offset_top = 30.5943
 offset_right = 40.1659
 offset_bottom = 38.5943
+scale = Vector2(0.1, 0.1)
+icon = ExtResource("20_5newe")
 
 [node name="HpLabel" type="Label" parent="UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel/HpButton"]
 layout_mode = 0
-offset_left = -30.8844
-offset_top = 2.64481
-offset_right = 9.11555
-offset_bottom = 25.6448
-scale = Vector2(0.73258, 0.352225)
+offset_left = -303.318
+offset_top = 4.77011
+offset_right = -263.318
+offset_bottom = 27.7701
 label_settings = SubResource("LabelSettings_37s47")
 
 [node name="ExpBar" type="Control" parent="UI"]
 layout_mode = 3
-anchors_preset = 0
-offset_left = 302.0
-offset_top = 13.0
-offset_right = 342.0
-offset_bottom = 53.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 314.0
+offset_top = -86.0
+offset_right = 314.0
+offset_bottom = -86.0
+grow_vertical = 0
+scale = Vector2(3.04, 1)
+metadata/_edit_group_ = true
 
 [node name="ExpBar" type="TextureProgressBar" parent="UI/ExpBar"]
 layout_mode = 0
-offset_left = -169.0
-offset_top = 536.0
-offset_right = -129.0
-offset_bottom = 576.0
+offset_left = -86.0
+offset_top = 46.0
+offset_right = 1.0
+offset_bottom = 86.0
 scale = Vector2(4.04, 1)
+value = 50.0
+texture_under = ExtResource("7_u4hed")
+texture_progress = ExtResource("4_p6780")
+metadata/_edit_group_ = true
+
+[node name="lvlchara" type="Label" parent="UI/ExpBar"]
+layout_mode = 0
+offset_left = 83.5526
+offset_top = 16.0
+offset_right = 123.553
+offset_bottom = 39.0
+metadata/_edit_group_ = true
