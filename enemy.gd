@@ -158,5 +158,7 @@ func die():
 		collision_shape.set_deferred("disabled", true)
 
 	anim.play("death")
-	await anim.animation_finished
+
+	# Usunięcie po krótkim czasie (0.5 sekundy)
+	await get_tree().create_timer(0.5).timeout
 	queue_free()
