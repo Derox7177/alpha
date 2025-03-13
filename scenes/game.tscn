@@ -364,16 +364,7 @@ tile_map_data = PackedByteArray("AAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAA
 tile_set = SubResource("TileSet_rysoc")
 use_kinematic_bodies = true
 
-<<<<<<< Updated upstream
-[node name="Layer2" type="TileMapLayer" parent="TileMap"]
-use_parent_material = true
-tile_set = SubResource("TileSet_rysoc")
-=======
-[node name="obiekty" type="TileMapLayer" parent="Tilemaps"]
-y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAGAA8AAgAAAAAAAQAYAA8AAgAAAAAAAQAdAAkAAgAAAAAAAQAYAAQAAgAAAAAAAQAhAAIAAgAAAAAAAQAOAA0AAgAAAAAAAQALAAMAAgAAAAAAAQATABIAAgAAAAAAAQAGAAYAAgAAAAAAAQD+/xEAAwAAAAAAAAD9/wgAAwAAAAAAAAD8/wQAAwAAAAAAAAD+/wIAAwAAAAAAAAD8/woAAwAAAAAAAAAnAAYAAwAAAAAAAAAnAAgAAwAAAAAAAAAoAAAAAwAAAAAAAAApAAIAAwAAAAAAAAAGABUAAwAAAAAAAAANABUAAwAAAAAAAAAdABQAAwAAAAAAAAAkAAYAAwAAAAAAAAAlABAAAwAAAAAAAAArAA8AAwAAAAAAAAAoABUAAwAAAAAAAAAqAAsAAwAAAAAAAAAkABUAAwAAAAAAAAD8/w8AAwAAAAAAAAAVAP3/AwAAAAAAAAAKAP//AwAAAAAAAAAFAP7/AwAAAAAAAAABAP//AwAAAAAAAAAhAP//AwAAAAAAAAAiAP7/AwAAAAAAAAAbAP//AwAAAAAAAAD7/xIAAwAAAAAAAAAEAP7/AwAAAAAAAAA=")
-tile_set = SubResource("TileSet_1kice")
->>>>>>> Stashed changes
+
 
 [node name="Node2D" type="Node2D" parent="."]
 
@@ -413,10 +404,7 @@ texture = ExtResource("6_ca42v")
 position = Vector2(207, 432)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-<<<<<<< Updated upstream
-visible = false
-=======
->>>>>>> Stashed changes
+
 
 [node name="Enemy" parent="." instance=ExtResource("2_q6x8f")]
 position = Vector2(1106, 174)
