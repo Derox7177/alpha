@@ -816,6 +816,7 @@ position = Vector2(2248, 1268)
 visible = false
 
 [node name="ExampleBalloon" parent="." groups=["dialog_balloon"] instance=ExtResource("26_bhx41")]
+visible = false
 
 [node name="DialogHandler" type="Node2D" parent="."]
 script = ExtResource("27_sww3w")
@@ -824,3 +825,4 @@ script = ExtResource("27_sww3w")
 position = Vector2(1477, 314)
 
 [node name="PauseMenu" parent="." instance=ExtResource("30_sgl2t")]
+visible = false
