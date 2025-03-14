@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://7fgvcxmyi1jv"]
+[gd_scene load_steps=50 format=4 uid="uid://7fgvcxmyi1jv"]
 
 [ext_resource type="Texture2D" uid="uid://ccc7byh3fgw4l" path="res://assety pelne/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="1_dinhu"]
 [ext_resource type="PackedScene" uid="uid://dyp48q43ps4t7" path="res://scenes/player.tscn" id="2_aqpvn"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://c7ubjsyk661u2" path="res://dialogi/balloon.tscn" id="26_bhx41"]
 [ext_resource type="PackedScene" uid="uid://gdog3v7rwugg" path="res://scenes/game_over.tscn" id="26_sww3w"]
 [ext_resource type="Script" uid="uid://dkqc6dm61qhsw" path="res://script/dialog_handler.gd" id="27_sww3w"]
+[ext_resource type="PackedScene" uid="uid://cj1elp15ve30u" path="res://scenes/enemyspawn.tscn" id="29_suyxu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ssvqc"]
 texture = ExtResource("3_rysoc")
@@ -407,7 +408,7 @@ position = Vector2(546, 612)
 texture = ExtResource("14_ca42v")
 
 [node name="kamien2" type="Sprite2D" parent="Node2D"]
-position = Vector2(1550, 526)
+position = Vector2(1561, 557)
 texture = ExtResource("14_ca42v")
 
 [node name="kamien3" type="Sprite2D" parent="Node2D"]
@@ -415,7 +416,7 @@ position = Vector2(683, 1058)
 texture = ExtResource("14_ca42v")
 
 [node name="krzak" type="Sprite2D" parent="Node2D"]
-position = Vector2(1393, 660)
+position = Vector2(1553, 379)
 texture = ExtResource("6_ca42v")
 
 [node name="BridgeAll" type="Sprite2D" parent="Node2D"]
@@ -431,12 +432,16 @@ position = Vector2(207, 432)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="Enemy" parent="." instance=ExtResource("2_q6x8f")]
-position = Vector2(1106, 174)
+position = Vector2(641, 861)
 
 [node name="Enemy2" parent="." instance=ExtResource("2_q6x8f")]
-position = Vector2(1096, 422)
-scale = Vector2(1.5, 1.5)
-skew = 0.127409
+position = Vector2(1583, 1178)
+scale = Vector2(1.7, 1.7)
+chase_speed = 280.0
+atk = 10
+hp = 500
+attack_range = 140.0
+exp_reward = 1000
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(1210, 1275)
@@ -810,3 +815,6 @@ visible = false
 
 [node name="DialogHandler" type="Node2D" parent="."]
 script = ExtResource("27_sww3w")
+
+[node name="Enemyspawn" parent="." instance=ExtResource("29_suyxu")]
+position = Vector2(1477, 314)

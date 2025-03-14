@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cj1elp15ve30u"]
+
+[ext_resource type="Script" uid="uid://55tl5k4h8dly" path="res://scenes/enemyspawn.gd" id="1_d8533"]
+[ext_resource type="PackedScene" uid="uid://dgifwb5c0tcka" path="res://enemyspawnmob.tscn" id="2_7kove"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8533"]
+size = Vector2(171, 154)
+
+[node name="Enemyspawn" type="Node2D"]
+script = ExtResource("1_d8533")
+enemy_scene = ExtResource("2_7kove")
+
+[node name="Spawntime" type="Timer" parent="."]
+wait_time = 8.768
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(75.5, 67)
+shape = SubResource("RectangleShape2D_d8533")
