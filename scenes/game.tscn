@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://7fgvcxmyi1jv"]
+[gd_scene load_steps=52 format=4 uid="uid://7fgvcxmyi1jv"]
 
 [ext_resource type="Texture2D" uid="uid://ccc7byh3fgw4l" path="res://assety pelne/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="1_dinhu"]
 [ext_resource type="PackedScene" uid="uid://dyp48q43ps4t7" path="res://scenes/player.tscn" id="2_aqpvn"]
@@ -29,6 +29,8 @@
 [ext_resource type="PackedScene" uid="uid://gdog3v7rwugg" path="res://scenes/game_over.tscn" id="26_sww3w"]
 [ext_resource type="Script" uid="uid://dkqc6dm61qhsw" path="res://script/dialog_handler.gd" id="27_sww3w"]
 [ext_resource type="PackedScene" uid="uid://cj1elp15ve30u" path="res://scenes/enemyspawn.tscn" id="29_suyxu"]
+[ext_resource type="PackedScene" uid="uid://cpne8y66k1etd" path="res://scenes/pause_menu.tscn" id="30_sgl2t"]
+[ext_resource type="PackedScene" uid="uid://bqqx7gmlnlfb3" path="res://scenes/menu.tscn" id="31_qouja"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ssvqc"]
 texture = ExtResource("3_rysoc")
@@ -365,6 +367,8 @@ font_size = 32
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
+
+[node name="Menu" parent="." instance=ExtResource("31_qouja")]
 
 [node name="Tilemaps" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -811,10 +815,12 @@ position = Vector2(2248, 1268)
 [node name="GameOver" parent="." instance=ExtResource("26_sww3w")]
 visible = false
 
-[node name="ExampleBalloon" parent="." instance=ExtResource("26_bhx41")]
+[node name="ExampleBalloon" parent="." groups=["dialog_balloon"] instance=ExtResource("26_bhx41")]
 
 [node name="DialogHandler" type="Node2D" parent="."]
 script = ExtResource("27_sww3w")
 
 [node name="Enemyspawn" parent="." instance=ExtResource("29_suyxu")]
 position = Vector2(1477, 314)
+
+[node name="PauseMenu" parent="." instance=ExtResource("30_sgl2t")]

@@ -20,6 +20,7 @@ var blackhole_cost: int = 10
 var lighting_cost: int = 10
 var shield_cost: int = 10
 
+@onready var swordsoundshit: AudioStreamPlayer2D = $swordsoundshit
 # Referencje do elementów UI – ustawione według ścieżek w drzewie scen:
 @onready var hp_bar: TextureProgressBar = get_node("/root/Game/UI/Control/VBoxContainer/HPBar")
 @onready var mana_bar: TextureProgressBar = get_node("/root/Game/UI/Control/VBoxContainer/ManaBar")
@@ -191,7 +192,7 @@ func attack():
 		return
 	is_attacking = true
 	anim.play("attack")
-	
+	swordsoundshit.play()
 
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	for enemy in enemies:
