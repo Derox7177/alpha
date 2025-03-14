@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://7fgvcxmyi1jv"]
+[gd_scene load_steps=49 format=4 uid="uid://7fgvcxmyi1jv"]
 
 [ext_resource type="Texture2D" uid="uid://ccc7byh3fgw4l" path="res://assety pelne/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="1_dinhu"]
 [ext_resource type="PackedScene" uid="uid://dyp48q43ps4t7" path="res://scenes/player.tscn" id="2_aqpvn"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://c0hmqfa8151db" path="res://assety pelne/Tiny Swords (Update 010)/Terrain/Bridge/Bridge_All.png" id="23_bt5mj"]
 [ext_resource type="PackedScene" uid="uid://cwh06yowlcht0" path="res://teleport.tscn" id="24_e1j6l"]
 [ext_resource type="PackedScene" uid="uid://c7ubjsyk661u2" path="res://dialogi/balloon.tscn" id="26_bhx41"]
+[ext_resource type="PackedScene" uid="uid://gdog3v7rwugg" path="res://scenes/game_over.tscn" id="26_sww3w"]
 [ext_resource type="Script" uid="uid://dkqc6dm61qhsw" path="res://script/dialog_handler.gd" id="27_sww3w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ssvqc"]
@@ -344,9 +345,7 @@ bg_color = Color(0.00184107, 0.00184107, 0.00184107, 1)
 bg_color = Color(0.0145288, 0.456915, 0.741006, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_264po"]
-line_spacing = 1.0
 font_size = 8
-outline_size = 2
 
 [sub_resource type="LabelSettings" id="LabelSettings_1kice"]
 font_size = 64
@@ -356,6 +355,9 @@ font_size = 64
 
 [sub_resource type="LabelSettings" id="LabelSettings_37s47"]
 font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_sww3w"]
+font_size = 42
 
 [sub_resource type="LabelSettings" id="LabelSettings_e1j6l"]
 font_size = 32
@@ -701,6 +703,7 @@ layout_mode = 2
 
 [node name="StatPointsLabel" type="Label" parent="UI/StatPanel/PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
 label_settings = SubResource("LabelSettings_264po")
 vertical_alignment = 1
 
@@ -756,6 +759,13 @@ offset_right = -263.318
 offset_bottom = 27.7701
 label_settings = SubResource("LabelSettings_37s47")
 
+[node name="StatPointsLabell" type="Label" parent="UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel"]
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 34.0
+scale = Vector2(0.133886, 0.152163)
+label_settings = SubResource("LabelSettings_sww3w")
+
 [node name="ExpBar" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 2
@@ -793,14 +803,8 @@ metadata/_edit_group_ = true
 [node name="teleport" parent="." instance=ExtResource("24_e1j6l")]
 position = Vector2(2248, 1268)
 
-[node name="GameOver" type="CanvasLayer" parent="."]
-
-[node name="Button" type="Button" parent="GameOver"]
-offset_left = 1148.0
-offset_top = -366.0
-offset_right = 1156.0
-offset_bottom = -358.0
-text = "Restart Game"
+[node name="GameOver" parent="." instance=ExtResource("26_sww3w")]
+visible = false
 
 [node name="ExampleBalloon" parent="." instance=ExtResource("26_bhx41")]
 

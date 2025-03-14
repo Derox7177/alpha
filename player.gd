@@ -41,7 +41,7 @@ var shield_cost: int = 10
 @onready var exp_bar: TextureProgressBar = get_node("/root/Game/UI/ExpBar/ExpBar")
 @onready var lvlchara: Label = get_node("/root/Game/UI/ExpBar/lvlchara")
 @onready var stat_panel: Control = get_node("/root/Game/UI/StatPanel")
-@onready var stat_points_label: Label = get_node("/root/Game/UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel")
+@onready var stat_points_label: Label = get_node("/root/Game/UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel/StatPointsLabell")
 @onready var speed_label: Label = get_node("/root/Game/UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel/SpeedButton/SpeedLabel")
 @onready var attack_label: Label = get_node("/root/Game/UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel/AttackButton/AttackLabel")
 @onready var hp_label_stat: Label = get_node("/root/Game/UI/StatPanel/PanelContainer/VBoxContainer/StatPointsLabel/HpButton/HpLabel")
@@ -274,9 +274,10 @@ func take_damage(amount: int):
 		die()
 
 func die():
-	# Obsługa śmierci gracza
 	print("💀 Gracz zginął!")
+	get_tree().get_root().get_node("GameOver").show_game_over()
 	queue_free()
+
 
 func _regenerate_mana():
 	# Regeneracja many (1 mana na sekundę)
