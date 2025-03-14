@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://cho26ltqba1kq"]
+
+[node name="UI" type="CanvasLayer" groups=["game_ui"]]
