@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://drta5ufvpaxmc"]
+[gd_scene load_steps=8 format=3 uid="uid://cmhegtkvaton3"]
 
 [ext_resource type="Texture2D" uid="uid://c00mch6apg7un" path="res://assety pelne/Tiny Swords (Update 010)/Resources/Trees/Tree.png" id="1_avsvi"]
 
@@ -46,6 +46,7 @@ radius = 19.0
 [node name="tree" type="StaticBody2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="tree"]
+y_sort_enabled = true
 position = Vector2(0, 3)
 sprite_frames = SubResource("SpriteFrames_18mvg")
 frame_progress = 0.243878

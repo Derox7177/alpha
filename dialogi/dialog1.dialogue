@@ -1,0 +1,18 @@
+~ start
+Krab: Witaj, podróżniku! Musisz przejść przez most na drugi koniec mapy. Po drodze spotkasz wrogów.
+- Zostaję tutaj => stayed
+- Idę i zabijam wrogów => killEnemies
+- Idę, ale nie zabijam wrogów => noKill
+
+~ stayed
+Krab: Rozumiem... Ale nie zajdziesz daleko, jeśli boisz się wrogów.
+=> END
+
+~ killEnemies
+Krab: Świetnie! Pokonaj ich i spotkajmy się na moście. 
+=> END
+
+~ noKill
+Krab: Jeśli ich nie pokonasz, przejście przez most będzie bardzo trudne!
+=> END
+

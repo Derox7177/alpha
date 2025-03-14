@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://7fgvcxmyi1jv"]
+[gd_scene load_steps=46 format=4 uid="uid://7fgvcxmyi1jv"]
 
 [ext_resource type="Texture2D" uid="uid://ccc7byh3fgw4l" path="res://assety pelne/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="1_dinhu"]
 [ext_resource type="PackedScene" uid="uid://dyp48q43ps4t7" path="res://scenes/player.tscn" id="2_aqpvn"]
@@ -26,7 +26,6 @@
 [ext_resource type="Texture2D" uid="uid://c0hmqfa8151db" path="res://assety pelne/Tiny Swords (Update 010)/Terrain/Bridge/Bridge_All.png" id="23_bt5mj"]
 [ext_resource type="PackedScene" uid="uid://cwh06yowlcht0" path="res://teleport.tscn" id="24_e1j6l"]
 [ext_resource type="PackedScene" uid="uid://c7ubjsyk661u2" path="res://dialogi/balloon.tscn" id="26_bhx41"]
-[ext_resource type="Script" uid="uid://dkqc6dm61qhsw" path="res://script/dialog_handler.gd" id="27_sww3w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ssvqc"]
 texture = ExtResource("3_rysoc")
@@ -803,6 +802,3 @@ offset_bottom = -358.0
 text = "Restart Game"
 
 [node name="ExampleBalloon" parent="." instance=ExtResource("26_bhx41")]
-
-[node name="DialogHandler" type="Node2D" parent="."]
-script = ExtResource("27_sww3w")
